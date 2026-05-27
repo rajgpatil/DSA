@@ -78,9 +78,21 @@ class MaxHeap {
         System.out.println();
     }
 
+    public void heapSort(){
+        int originalSize = size;
+        int t = size - 1;
+        while(t > 0){
+            swap(t,0);
+            t--;
+            size--;
+            heapify(0);
+        }
+        size = originalSize;
+
+    }
+
     public static void main(String args[]){
         MaxHeap h = new MaxHeap(10);
-
         h.insert(50);
         h.insert(30);
         h.insert(40);
@@ -96,6 +108,10 @@ class MaxHeap {
         System.out.println(h.delete());
         
         System.out.println("Heap After Deletion:");
+        h.printHeap();
+
+        h.heapSort();
+        System.out.println("After Heap Sort:");
         h.printHeap();
     }
 }
